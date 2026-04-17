@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #FBF9F4;
+  --ink: #0A1D12;
+  --forest: #0C2414;
+  --rule: rgba(10, 29, 18, 0.08);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background: #0C2414;
+    color: #FBF9F4;
+  }
+
+  /* Respect reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid #0C2414;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* The signature serif-italic emphasis used for "Tech AI", "Vault", "Registry".
+     Fraunces 500 italic — sturdier than a book-weight italic, not decorative. */
+  .serif-emph {
+    font-family: var(--font-serif), ui-serif, Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 0.045em;
+    text-underline-offset: 0.16em;
+    letter-spacing: -0.015em;
+  }
+
+  /* Hairline rule used between sections. */
+  .hairline {
+    border-top: 1px solid var(--rule);
+  }
+
+  /* Eyebrow / section label. */
+  .eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: theme("colors.forest.700");
+  }
+
+  /* Primary button — forest on bone. */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    background: theme("colors.forest.800");
+    color: theme("colors.bone.50");
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    border-radius: 999px;
+    transition: background 0.3s theme("transitionTimingFunction.out-expo"),
+      transform 0.3s theme("transitionTimingFunction.out-expo");
+  }
+  .btn-primary:hover {
+    background: theme("colors.forest.900");
+    transform: translateY(-1px);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  /* Secondary button — outlined. */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    background: transparent;
+    color: theme("colors.forest.800");
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    border-radius: 999px;
+    border: 1px solid rgba(31, 61, 31, 0.28);
+    transition: background 0.3s theme("transitionTimingFunction.out-expo"),
+      border-color 0.3s theme("transitionTimingFunction.out-expo");
+  }
+  .btn-ghost:hover {
+    background: rgba(31, 61, 31, 0.05);
+    border-color: rgba(31, 61, 31, 0.5);
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s theme("transitionTimingFunction.out-expo");
+  }
+  .link-underline:hover {
+    background-size: 0% 1px;
+  }
+
+  .field {
+    width: 100%;
+    padding: 0.875rem 0;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(17, 19, 16, 0.18);
+    font-size: 1rem;
+    color: theme("colors.ink.DEFAULT");
+    transition: border-color 0.3s theme("transitionTimingFunction.out-expo");
+  }
+  .field::placeholder {
+    color: theme("colors.ink.subtle");
+  }
+  .field:focus {
+    outline: none;
+    border-bottom-color: theme("colors.forest.800");
+  }
+
+  textarea.field {
+    resize: vertical;
+    min-height: 7.5rem;
+  }
+
+  /* Subtle reveal on scroll — JS toggles .is-visible. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.9s theme("transitionTimingFunction.out-expo"),
+      transform 0.9s theme("transitionTimingFunction.out-expo");
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Paper grain — extremely subtle, gives surfaces a premium tactile feel. */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
