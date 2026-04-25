@@ -9,20 +9,21 @@ export function Hero() {
           Campaign Tech AI · Political-grade infrastructure
         </p>
 
-        <h1 className="mt-8 font-sans font-light tracking-tightest-2 text-display-xl text-ink animate-fade-up [text-wrap:balance]">
-          <span className="block">Verified infrastructure</span>
+        <h1 className="mt-8 font-sans font-light tracking-tightest-2 text-display-xl text-ink animate-fade-up">
           <span className="block">
-            for the <span className="serif-emph">modern campaign</span>.
+            The <span className="serif-emph">quiet</span> infrastructure
           </span>
+          <span className="block">of the modern campaign.</span>
         </h1>
 
         <p
           className="mt-10 max-w-2xl text-lg font-light leading-relaxed text-ink/75 md:text-xl animate-fade-up"
           style={{ animationDelay: "120ms" }}
         >
-          Campaign Tech AI builds the trusted information layer and secure
-          workflow tools modern political organizations rely on — engineered for
-          the era of agentic AI, designed for the pace of a live campaign.
+          Campaign Tech AI builds the verified information layer and the
+          agentic workflow surface that modern political organizations rely on
+          — engineered for the era of AI, designed for the pace of a live
+          campaign.
         </p>
 
         <div
@@ -38,22 +39,21 @@ export function Hero() {
           </a>
         </div>
 
-        {/* Refined meta strip — reinforces credibility without logos. */}
         <div
           className="mt-24 grid grid-cols-1 gap-8 border-t border-ink/10 pt-10 sm:grid-cols-3 animate-fade-in"
           style={{ animationDelay: "340ms" }}
         >
           <MetaItem
             label="Verified"
-            body="Campaign-controlled sources, signed and auditable end-to-end."
+            body="Campaign-controlled sources, signed end-to-end."
           />
           <MetaItem
-            label="Secure"
-            body="Encrypted storage, granular access, and approval workflows by default."
+            label="Accountable"
+            body="Every agentic decision routed through human review."
           />
           <MetaItem
-            label="AI-ready"
-            body="Retrieval-first architecture, engineered for agentic systems."
+            label="Agentic"
+            body="Retrieval-first architecture, built for the agent era."
           />
         </div>
       </div>
@@ -78,7 +78,6 @@ function ArrowRight() {
       viewBox="0 0 14 14"
       fill="none"
       aria-hidden="true"
-      className="transition-transform duration-300 ease-out-expo group-hover:translate-x-0.5"
     >
       <path
         d="M1 7h12m0 0L7.5 1.5M13 7l-5.5 5.5"

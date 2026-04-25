@@ -9,7 +9,7 @@ export function Products() {
     >
       <div className="mx-auto max-w-[1280px] px-6 md:px-10">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
-          <div className="md:col-span-6">
+          <div className="md:col-span-5">
             <Reveal>
               <p className="eyebrow">Products</p>
               <h2
@@ -21,11 +21,11 @@ export function Products() {
               </h2>
             </Reveal>
           </div>
-          <div className="md:col-span-5 md:col-start-8">
+          <div className="md:col-span-6 md:col-start-7">
             <Reveal delay={100}>
               <p className="text-lg leading-relaxed text-ink/75">
                 We make the information the world sees about a campaign
-                trustworthy — and the work happening behind it controlled.
+                trustworthy — and the agents working behind it accountable.
               </p>
             </Reveal>
           </div>
@@ -47,20 +47,20 @@ export function Products() {
 
           <ProductCard
             titlePrefix="Campaign"
-            titleEmph="Vault"
-            positioning="Secure storage. Streamlined approvals."
-            body="Campaign content moves fast — and usually through dozens of hands before it clears. Campaign Vault gives teams a secure, auditable home for sensitive materials and a faster path to approval, replacing inbox chaos and scattered drives with a single source of truth built for political workflows."
+            titleEmph="Desk"
+            positioning="Where agentic work meets human review."
+            body="Modern campaigns are increasingly run by dozens of AI agents and automations — drafting, deciding, and acting in the background. Campaign Desk is the operating surface where that work meets human judgment: a personalized, dynamic to-do list for every team member, routed through built-in approval workflows, with chat that spans every connected tool and task."
             features={[
-              "Streamlined approval workflows",
-              "Encrypted document and asset storage",
-              "Granular, role-based access",
-              "Audit-ready activity trails",
+              "Personalized to-do list per team member",
+              "Built-in approval workflows",
+              "Cross-task chat across your AI stack",
+              "Connect any agent or partner tool",
             ]}
           />
         </div>
 
         <Reveal delay={120} className="mt-20 md:mt-28">
-          <div className="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="flex flex-col items-start gap-6 border-t border-ink/10 pt-10 md:flex-row md:items-end md:justify-between">
             <p className="max-w-xl text-lg leading-relaxed text-ink/70">
               Offered by invitation to qualified campaigns, party committees,
               and allied organizations.

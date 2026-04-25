@@ -1,21 +1,30 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Public_Sans, Source_Serif_4, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+// Public Sans — primary display & body. Brand guide: weights 400 → 800.
+const publicSans = Public_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-// Fraunces at 500 italic — structural, sturdy emphasis. No decorative flourishes.
-const fraunces = Fraunces({
+// Source Serif 4 italic 600 — single-word emphasis only. No underline.
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   variable: "--font-serif",
   display: "swap",
-  weight: ["500"],
+  weight: ["600"],
   style: ["italic"],
+});
+
+// JetBrains Mono — labels, IDs, metadata.
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500"],
 });
 
 const siteUrl = "https://campaigntech.ai";
@@ -23,21 +32,21 @@ const siteUrl = "https://campaigntech.ai";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Campaign Tech AI — Verified infrastructure for the modern campaign",
+    default: "Campaign Tech AI — The quiet infrastructure of modern campaigns",
     template: "%s · Campaign Tech AI",
   },
   description:
-    "Campaign Tech AI builds the verified information layer and secure workflow tools modern political organizations rely on. Makers of Campaign Registry and Campaign Vault.",
+    "Campaign Tech AI builds Campaign Registry — the verified information layer for AI — and Campaign Desk, the operating surface for agentic political workflows.",
   keywords: [
     "political technology",
     "campaign technology",
     "AEO",
     "GEO",
-    "generative engine optimization",
+    "agentic AI",
     "campaign software",
     "political AI",
     "Campaign Registry",
-    "Campaign Vault",
+    "Campaign Desk",
   ],
   authors: [{ name: "Campaign Tech AI" }],
   creator: "Campaign Tech AI",
@@ -45,16 +54,16 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "Campaign Tech AI",
-    title: "Campaign Tech AI — Verified infrastructure for the modern campaign",
+    title: "Campaign Tech AI — The quiet infrastructure of modern campaigns",
     description:
-      "The verified information layer and secure workflow tools modern political organizations rely on.",
+      "The verified information layer and the agentic workflow surface modern political organizations rely on.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Campaign Tech AI",
     description:
-      "Verified information. Controlled workflows. Built for the modern campaign.",
+      "The quiet infrastructure of modern campaigns.",
   },
   robots: {
     index: true,
@@ -68,7 +77,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1F3D1F",
+  themeColor: "#14493C",
   width: "device-width",
   initialScale: 1,
 };
@@ -80,7 +89,7 @@ const organizationJsonLd = {
   url: siteUrl,
   email: "hello@campaigntech.ai",
   description:
-    "Verified political information and secure campaign workflow infrastructure.",
+    "Verified political information and agentic workflow infrastructure.",
   sameAs: [],
 };
 
@@ -90,7 +99,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+    <html
+      lang="en"
+      className={`${publicSans.variable} ${sourceSerif.variable} ${jetbrainsMono.variable}`}
+    >
       <body className="font-sans antialiased">
         <a
           href="#main"

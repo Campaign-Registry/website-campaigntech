@@ -5,43 +5,53 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Forest green — deep, restrained, luxury. 800 is the signature surface.
+        // Forest — anchored on Signal Forest #14493C from the brand guide.
         forest: {
-          50: "#F0F4EF",
-          100: "#DBE3D8",
-          200: "#B2C6AB",
-          300: "#86A57D",
-          400: "#59834E",
-          500: "#396632",
-          600: "#244B22",
-          700: "#1A3820",
-          800: "#0C2414",
-          900: "#061308",
-          950: "#020A05",
+          50: "#E9EFEC",
+          100: "#CBDAD2",
+          200: "#9CB9AB",
+          300: "#6F9886",
+          400: "#477B69",
+          500: "#2C6650",
+          600: "#1F5544",
+          700: "#1B5A48",
+          800: "#14493C",
+          900: "#0E3429",
+          950: "#06180F",
         },
-        // Warm, paper-like neutrals — the luxury fintech "canvas".
+        // Bone — primary surface from the brand guide.
         bone: {
-          50: "#FBF9F4",
-          100: "#F5F1E8",
-          200: "#EBE5D5",
-          300: "#DCD3BD",
-          400: "#B8AE95",
-          500: "#8E8672",
-          600: "#6B6556",
-          700: "#4D4A40",
-          800: "#2E2C26",
-          900: "#1A1915",
+          50: "#F4EFE6",
+          100: "#EAE3D0",
+          200: "#DBD0B4",
+          300: "#C2B894",
+          400: "#A39A77",
+          500: "#7F7860",
+          600: "#605B49",
+          700: "#46432F",
+          800: "#2A2820",
+          900: "#181612",
         },
         ink: {
-          // Primary text is a deep forest, not black — connects the palette.
-          DEFAULT: "#0A1D12",
-          muted: "#4D4A40",
-          subtle: "#8E8672",
+          DEFAULT: "#0C1F1B",
+          muted: "#475149",
+          subtle: "#7E867E",
         },
+        sage: {
+          DEFAULT: "#7FA69A",
+          50: "#EEF3F1",
+          100: "#D7E2DD",
+          200: "#B2C7BE",
+        },
+        // Wayfinding — used sparingly for product variants and accents.
+        terracotta: { DEFAULT: "#D4573A", soft: "#F2D6CB", deep: "#7B3B26" },
+        civic:      { DEFAULT: "#2D6AA8", soft: "#DCE5EE", deep: "#1F4A78" },
+        ochre:      { DEFAULT: "#C49A2E", soft: "#F1E2BC", deep: "#6E5717" },
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans:  ["var(--font-sans)",  "ui-sans-serif", "system-ui", "sans-serif"],
         serif: ["var(--font-serif)", "ui-serif", "Georgia", "serif"],
+        mono:  ["var(--font-mono)",  "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
       letterSpacing: {
         "tightest-2": "-0.04em",

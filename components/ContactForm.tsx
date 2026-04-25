@@ -82,8 +82,8 @@ export function ContactForm() {
             >
               <option value="general">General inquiry</option>
               <option value="registry">Campaign Registry</option>
-              <option value="vault">Campaign Vault</option>
-              <option value="both">Campaign Registry + Campaign Vault</option>
+              <option value="desk">Campaign Desk</option>
+              <option value="both">Campaign Registry + Campaign Desk</option>
             </select>
             <svg
               aria-hidden="true"

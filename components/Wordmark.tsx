@@ -1,18 +1,24 @@
+import { SignalMark } from "./SignalMark";
+
 type WordmarkProps = {
   /** Render just the logotype without the link wrapper. */
   plain?: boolean;
   className?: string;
+  markSize?: number;
 };
 
 /**
- * "Campaign" — sans serif; "Tech AI" — italicized serif with underline.
- * The signature treatment. Used in the nav, footer, and emphasized copy.
+ * The wordmark pairs the concentric-ring signal mark with the company name.
+ * Per the brand guide, the wordmark itself sets in Public Sans medium —
+ * the mark, not typography, is the brand's visual signature.
  */
-export function Wordmark({ plain, className = "" }: WordmarkProps) {
+export function Wordmark({ plain, className = "", markSize = 22 }: WordmarkProps) {
   const inner = (
-    <span className={`inline-flex items-baseline gap-[0.3em] ${className}`}>
-      <span className="font-sans font-medium tracking-tight">Campaign</span>
-      <span className="serif-emph">Tech AI</span>
+    <span className={`inline-flex items-center gap-2.5 ${className}`}>
+      <SignalMark size={markSize} />
+      <span className="font-sans font-medium tracking-tight">
+        Campaign Tech AI
+      </span>
     </span>
   );
 
@@ -22,7 +28,7 @@ export function Wordmark({ plain, className = "" }: WordmarkProps) {
     <a
       href="#top"
       aria-label="Campaign Tech AI — home"
-      className="inline-flex items-baseline text-ink transition-opacity hover:opacity-80"
+      className="inline-flex items-center text-ink transition-opacity hover:opacity-80"
     >
       {inner}
     </a>

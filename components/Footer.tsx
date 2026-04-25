@@ -22,7 +22,7 @@ export function Footer() {
             </li>
             <li>
               <a href="#products" className="text-ink/75 hover:text-ink">
-                Campaign <span className="serif-emph">Vault</span>
+                Campaign <span className="serif-emph">Desk</span>
               </a>
             </li>
           </ul>

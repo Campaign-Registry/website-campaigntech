@@ -46,7 +46,7 @@ export function About() {
               <Stat label="Verified" value="End-to-end" />
               <Stat label="Architecture" value="Retrieval-first" />
               <Stat label="Operations" value="Audit-ready" />
-              <Stat label="Access" value="By invitation" />
+              <Stat label="Access" value="Invitation-only" />
             </div>
           </Reveal>
         </div>

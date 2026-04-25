@@ -7,7 +7,7 @@ const ContactSchema = z.object({
   name: z.string().min(2, "Please share your full name.").max(120),
   email: z.string().email("Please enter a valid email."),
   organization: z.string().max(160).optional().or(z.literal("")),
-  interest: z.enum(["registry", "vault", "both", "general"]).default("general"),
+  interest: z.enum(["registry", "desk", "both", "general"]).default("general"),
   message: z.string().min(10, "A little more detail helps us route your note.").max(4000),
   // Honeypot — real users never fill this.
   website: z.string().max(0).optional().or(z.literal("")),
@@ -21,8 +21,8 @@ export type ContactState = {
 
 const INTEREST_LABEL: Record<string, string> = {
   registry: "Campaign Registry",
-  vault: "Campaign Vault",
-  both: "Campaign Registry + Campaign Vault",
+  desk: "Campaign Desk",
+  both: "Campaign Registry + Campaign Desk",
   general: "General inquiry",
 };
 

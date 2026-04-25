@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --bg: #FBF9F4;
-  --ink: #0A1D12;
-  --forest: #0C2414;
-  --rule: rgba(10, 29, 18, 0.08);
+  --bg: #F4EFE6;
+  --ink: #0C1F1B;
+  --forest: #14493C;
+  --rule: rgba(12, 31, 27, 0.08);
 }
 
 @layer base {
@@ -20,15 +20,13 @@
   body {
     background: var(--bg);
     color: var(--ink);
-    font-feature-settings: "ss01", "cv11";
   }
 
   ::selection {
-    background: #0C2414;
-    color: #FBF9F4;
+    background: #14493C;
+    color: #F4EFE6;
   }
 
-  /* Respect reduced motion. */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -41,40 +39,46 @@
   }
 
   :focus-visible {
-    outline: 2px solid #0C2414;
+    outline: 2px solid #14493C;
     outline-offset: 3px;
     border-radius: 2px;
   }
+
+  /* Native disclosure: suppress default marker on summary. */
+  details > summary { list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
 }
 
 @layer components {
-  /* The signature serif-italic emphasis used for "Tech AI", "Vault", "Registry".
-     Fraunces 500 italic — sturdier than a book-weight italic, not decorative. */
+  /*
+   * Source Serif 4 italic 600 — reserved for SINGLE-WORD accents only.
+   * Per brand guide: never body copy, never non-italic, no underline.
+   */
   .serif-emph {
     font-family: var(--font-serif), ui-serif, Georgia, serif;
     font-style: italic;
-    font-weight: 500;
-    text-decoration: underline;
-    text-decoration-thickness: 0.045em;
-    text-underline-offset: 0.16em;
-    letter-spacing: -0.015em;
+    font-weight: 600;
+    letter-spacing: -0.005em;
   }
 
-  /* Hairline rule used between sections. */
+  /* JetBrains Mono — technical metadata: timestamps, IDs, sync state. */
+  .mono {
+    font-family: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-feature-settings: "tnum", "ss03";
+  }
+
   .hairline {
     border-top: 1px solid var(--rule);
   }
 
-  /* Eyebrow / section label. */
   .eyebrow {
     font-size: 0.6875rem;
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: theme("colors.forest.700");
+    color: theme("colors.forest.800");
   }
 
-  /* Primary button — forest on bone. */
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -98,7 +102,6 @@
     transform: translateY(0);
   }
 
-  /* Secondary button — outlined. */
   .btn-ghost {
     display: inline-flex;
     align-items: center;
@@ -111,13 +114,13 @@
     font-weight: 500;
     letter-spacing: -0.005em;
     border-radius: 999px;
-    border: 1px solid rgba(31, 61, 31, 0.28);
+    border: 1px solid rgba(20, 73, 60, 0.28);
     transition: background 0.3s theme("transitionTimingFunction.out-expo"),
       border-color 0.3s theme("transitionTimingFunction.out-expo");
   }
   .btn-ghost:hover {
-    background: rgba(31, 61, 31, 0.05);
-    border-color: rgba(31, 61, 31, 0.5);
+    background: rgba(20, 73, 60, 0.05);
+    border-color: rgba(20, 73, 60, 0.5);
   }
 
   .link-underline {
@@ -136,7 +139,7 @@
     padding: 0.875rem 0;
     background: transparent;
     border: 0;
-    border-bottom: 1px solid rgba(17, 19, 16, 0.18);
+    border-bottom: 1px solid rgba(12, 31, 27, 0.18);
     font-size: 1rem;
     color: theme("colors.ink.DEFAULT");
     transition: border-color 0.3s theme("transitionTimingFunction.out-expo");
@@ -154,7 +157,6 @@
     min-height: 7.5rem;
   }
 
-  /* Subtle reveal on scroll — JS toggles .is-visible. */
   .reveal {
     opacity: 0;
     transform: translateY(12px);
@@ -165,15 +167,43 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
 
-/* Paper grain — extremely subtle, gives surfaces a premium tactile feel. */
-.grain::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.035;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  /*
+   * Signal mark animation — brand-guide one-motion-per-layout policy.
+   * Two rings breathe on a 4s cycle (offset by 2s); a soft emitter pulses
+   * outward every 3s. Print/static surfaces freeze at resting state.
+   */
+  .signal-mark {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: theme("colors.forest.800");
+  }
+  .signal-mark .ring-1 {
+    transform-origin: center;
+    animation: signal-breathe 4s ease-in-out infinite;
+  }
+  .signal-mark .ring-2 {
+    animation: signal-breathe 4s ease-in-out infinite;
+    animation-delay: -2s;
+  }
+  .signal-mark .pulse {
+    position: absolute;
+    width: 16%;
+    height: 16%;
+    border-radius: 999px;
+    background: currentColor;
+    animation: signal-pulse 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+
+  @keyframes signal-breathe {
+    0%, 100% { opacity: 0.85; }
+    50%      { opacity: 0.45; }
+  }
+
+  @keyframes signal-pulse {
+    0%   { transform: scale(1); opacity: 0.45; }
+    100% { transform: scale(8); opacity: 0;    }
+  }
 }
